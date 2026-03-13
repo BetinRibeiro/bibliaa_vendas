@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rogoberto Ribeiro da Silva">
+    <meta name="description" content="Treinamento de Vendas baseado em A Bíblia de Vendas - Curadoria por Rogoberto Ribeiro da Silva">
+    <title>Capítulo 1: A Filosofia do Sucesso | Rogoberto Ribeiro da Silva</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #f2a900; /* Ouro Vendas */
+            --text: #333;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #b21f1f, #fdbb2d);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        /* --- ADAPTAÇÃO: ESTILO DA NAVEGAÇÃO --- */
+        .nav-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-btn.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            border-color: #ccc;
+        }
+        /* -------------------------------------- */
+
+        .branding {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto 40px; /* Ajustado para acomodar a navegação */
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .quote-section {
+            font-style: italic;
+            border-left: 5px solid var(--secondary);
+            padding-left: 20px;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .concept-badge {
+            background: #eef2f3;
+            padding: 15px;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .concept-badge h3 { color: var(--primary); margin-bottom: 10px; }
+
+        .qa-section {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .qa-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .question {
+            font-weight: 800;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .json-viewer {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .highlight { color: var(--secondary); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="branding">Metodologia de Performance</div>
+        <h1>Rogoberto Ribeiro da Silva</h1>
+        <p>A Bíblia de Vendas: Masterclass de Atitude</p>
+    </header>
+
+    <!-- ADAPTAÇÃO: NAVEGAÇÃO TOPO -->
+    <nav class="nav-container">
+        <a href="#" class="nav-btn disabled">← Anterior</a>
+        <a href="2.html" class="nav-btn">Próximo Capítulo →</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>Capítulo 1: A Filosofia do Sucesso</h2>
+            <p>O capítulo inicial não foca em fechar a venda, mas em <strong>abrir o relacionamento</strong>. Jeffrey Gitomer estabelece que vender é uma transferência de entusiasmo.</p>
+            
+            <div class="quote-section">
+                "As pessoas não gostam que lhes vendam, mas elas adoram comprar."
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card concept-badge">
+                <h3>Psicologia da Compra</h3>
+                <p>Pare de focar no "Como vender" e domine o "Por que eles compram". O motivo é sempre emocional.</p>
+            </div>
+            <div class="card concept-badge">
+                <h3>A Regra do Riso</h3>
+                <p>Se você consegue fazê-los rir, consegue fazê-los comprar. O humor derruba barreiras defensivas.</p>
+            </div>
+            <div class="card concept-badge">
+                <h3>Atitude Mental</h3>
+                <p>Sua mente deve ser treinada antes da sua voz. A pré-venda começa na sua autoconfiança.</p>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <h2 style="margin-bottom: 30px; text-align: center;">Dinâmica de Fixação (P&R)</h2>
+            <div class="qa-item">
+                <span class="question">P: Qual a maior barreira no primeiro contato?</span>
+                <p>R: A falta de confiança. O cliente sente que você só quer a comissão. Solução: Estabeleça valor e conexão humana primeiro.</p>
+            </div>
+            <div class="qa-item">
+                <span class="question">P: O que fazer quando o cliente foca apenas no preço?</span>
+                <p>R: Entenda que você falhou em mostrar o valor. O preço alto é apenas o sintoma de que o benefício ainda não ficou claro.</p>
+            </div>
+        </div>
+
+        <div class="json-viewer" id="json-display">
+            <pre>
+{
+  "curador": "Rogoberto Ribeiro da Silva",
+  "capitulo": 1,
+  "status": "Treinamento Ativo",
+  "frase_ancora": "A venda começa quando o vendedor diz SIM para si mesmo.",
+  "objetivo": "Transformar tiradores de pedido em consultores de confiança."
+}
+            </pre>
+        </div>
+    </div>
+
+    <!-- ADAPTAÇÃO: NAVEGAÇÃO RODAPÉ -->
+    <nav class="nav-container" style="margin-bottom: 0;">
+        <a href="#" class="nav-btn disabled">← Anterior</a>
+        <a href="ultimocapitulo.html" class="nav-btn" style="background-color: var(--secondary); border-color: var(--secondary); color: var(--primary);">Ir para o Final 🏁</a>
+        <a href="2.html" class="nav-btn">Próximo Capítulo →</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2023 - Conteúdo Estruturado por <strong>Rogoberto Ribeiro da Silva</strong></p>
+        <p>Baseado na obra de Jeffrey Gitomer</p>
+    </footer>
+
+</body>
+</html>
