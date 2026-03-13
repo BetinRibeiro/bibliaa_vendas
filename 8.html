@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rogoberto Ribeiro da Silva">
+    <meta name="description" content="Treinamento de Vendas: Superando a Rejeição - Curadoria por Rogoberto Ribeiro da Silva">
+    <title>Capítulo 8: O Debugger Mental - Superando a Rejeição | Rogoberto Ribeiro da Silva</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #e74c3c; /* Vermelho para Rejeição/Erro */
+            --accent: #f2a900;
+            --text: #333;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --code-bg: #1e1e1e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #000);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .branding {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .nata-card {
+            background: #fff;
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Logic Section */
+        .script-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .script-item {
+            background: #fdf2f2;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .script-item strong { color: var(--secondary); display: block; margin-bottom: 5px; }
+
+        /* Steps */
+        .steps-box {
+            background: var(--code-bg);
+            color: #dcdcdc;
+            padding: 25px;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+        }
+        .step-line { margin-bottom: 10px; display: flex; }
+        .step-num { color: var(--accent); margin-right: 15px; }
+
+        .json-viewer {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .highlight-red { color: var(--secondary); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="branding">Metodologia de Performance</div>
+        <h1>Rogoberto Ribeiro da Silva</h1>
+        <p>A Bíblia de Vendas: Capítulo 8 - Superando a Rejeição</p>
+        <div class="status-badge">HTTP 403: Forbidden -> Try New Approach</div>
+    </header>
+
+    <nav class="nav-container">
+        <a href="7.html" class="nav-btn">← Capítulo 7</a>
+        <a href="9.html" class="nav-btn">Próximo Capítulo (9) →</a>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Card -->
+        <div class="card">
+            <h2>A Rejeição: O Debugger Mental</h2>
+            <p>A rejeição é apenas um erro de percurso, não o fim do programa. Aprenda a separar seu ego da transação: o cliente rejeitou sua oferta, não a sua pessoa.</p>
+        </div>
+
+        <!-- A Nata -->
+        <div class="grid">
+            <div class="nata-card">
+                <h3>Você não é o seu "Não"</h3>
+                <p>Um erro de compilação não define o programador; ele apenas aponta onde o código precisa de ajuste. <span class="highlight-red">Ego != Venda.</span></p>
+            </div>
+            <div class="nata-card">
+                <h3>A Lei dos Números</h3>
+                <p>Cada "Não" te deixa matematicamente mais perto do próximo "Sim". A rejeição é o custo de processamento do sucesso.</p>
+            </div>
+            <div class="nata-card">
+                <h3>O Log de Erros</h3>
+                <p>Não perca uma venda sem perguntar: "O que eu poderia ter feito para ser a sua escolha hoje?". Documente o aprendizado.</p>
+            </div>
+        </div>
+
+        <!-- Scripts de Conversão -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Scripts de Tratamento (Cura do Erro)</h3>
+            <div class="script-grid">
+                <div class="script-item">
+                    <strong>Rejeição por Preço:</strong>
+                    "Entendo. Se o orçamento mudar no futuro, qual seria o ponto de equilíbrio para termos essa ferramenta rodando aí?"
+                </div>
+                <div class="script-item">
+                    <strong>Rejeição por Concorrente:</strong>
+                    "Eles são bons! Qual foi o fator decisivo para eles? Isso me ajuda muito a melhorar meu serviço para o mercado."
+                </div>
+                <div class="script-item">
+                    <strong>Rejeição por Timing:</strong>
+                    "Sem problemas. Posso te enviar um resumo das nossas atualizações daqui a 3 meses apenas para você ficar por dentro?"
+                </div>
+            </div>
+        </div>
+
+        <!-- Passos da Resiliência -->
+        <div class="card">
+            <h3>Pipeline de Resiliência (Post-Mortem)</h3>
+            <div class="steps-box">
+                <div class="step-line"><span class="step-num">01</span><span>Respire: O mundo não acabou. O servidor está UP.</span></div>
+                <div class="step-line"><span class="step-num">02</span><span>Analise o log: Em qual etapa a conexão caiu?</span></div>
+                <div class="step-line"><span class="step-num">03</span><span>Ajuste o código: Mude a abordagem, não o objetivo.</span></div>
+                <div class="step-line"><span class="step-num">04</span><span>Recompile: Prepare o próximo lead com o novo dado.</span></div>
+                <div class="step-line"><span class="step-num">05</span><span>Execute: Vá para a próxima reunião. O movimento cura o medo.</span></div>
+            </div>
+        </div>
+
+        <!-- Desafio Pro -->
+        <div class="card" style="border-right: 5px solid var(--secondary); background: #fffcfc;">
+            <h3>🎯 Desafio Pro de Rogoberto</h3>
+            <p>Pegue as últimas 5 vendas perdidas e envie uma mensagem de agradecimento desejando sucesso com a escolha deles.</p>
+            <p style="margin-top: 10px; font-weight: bold; color: var(--primary);">Isso mantém a porta aberta e mostra uma maturidade que 99% dos vendedores não têm.</p>
+        </div>
+
+        <!-- JSON Viewer -->
+        <div class="json-viewer">
+            <pre>
+{
+  "id": 8,
+  "curador": "Rogoberto Ribeiro da Silva",
+  "meta": "A rejeição é o café da manhã dos campeões",
+  "logica": "Debug & Refactor",
+  "status": "Ready for Next Instance"
+}
+            </pre>
+        </div>
+    </div>
+
+    <nav class="nav-container" style="margin-bottom: 0;">
+        <a href="7.html" class="nav-btn">← Anterior</a>
+        <a href="ultimocapitulo.html" class="nav-btn" style="background-color: var(--accent); border-color: #000; color: #000;">Ir para o Final 🏁</a>
+        <a href="9.html" class="nav-btn">Próximo Capítulo →</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2023 - Conteúdo Estruturado por <strong>Rogoberto Ribeiro da Silva</strong></p>
+        <p>Baseado na obra de Jeffrey Gitomer</p>
+    </footer>
+
+</body>
+</html>
