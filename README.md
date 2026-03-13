@@ -19,13 +19,17 @@ O site está organizado de forma sequencial para garantir a entrega de valor em 
 ## 💻 Atitude como Código
 O projeto utiliza analogias do mundo do software para fixar conceitos de negócios:
 
-```javascript
+<pre>
+<code>
 // Runtime Configuration: Production
 while (isAlive) {
     Rogoberto.buildAttitude();      // Build diário de mindset
     Rogoberto.deliverValue();       // Deploy de valor real
     profit += valueGenerated - ego; // O lucro é proporcional ao valor gerado
 }
+
+</code>
+</pre>
 🛠️ Stack e SEO
 Hospedagem: GitHub Pages.
 
