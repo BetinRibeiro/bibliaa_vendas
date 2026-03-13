@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rogoberto Ribeiro da Silva">
+    <meta name="description" content="Treinamento de Vendas: Atitude e Lucro - Curadoria por Rogoberto Ribeiro da Silva">
+    <title>Capítulo 12: Deployment - Atitude e Lucro | Rogoberto Ribeiro da Silva</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #f2a900; /* Ouro de Vendas */
+            --accent: #10b981; /* Verde Sucesso/Lucro */
+            --text: #334155;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --code-bg: #1e1e1e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "PRODUCTION LIVE";
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .branding {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        h1 { font-size: 2.8rem; margin-bottom: 10px; color: #fff; }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .code-logic {
+            background: var(--code-bg);
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .nata-card {
+            background: #fff;
+            border-top: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .nata-card:hover { transform: translateY(-5px); }
+
+        .pilar-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-right: 4px solid var(--accent);
+        }
+
+        .deploy-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(to right, var(--secondary), #d97706);
+            color: #000;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            margin: 40px 0;
+            box-shadow: 0 10px 15px rgba(242, 169, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .json-viewer {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="branding">Metodologia de Performance</div>
+        <h1>Rogoberto Ribeiro da Silva</h1>
+        <p>A Bíblia de Vendas: Capítulo 12 - Atitude e Lucro</p>
+    </header>
+
+    <nav class="nav-container">
+        <a href="11.html" class="nav-btn">← Capítulo 11</a>
+        <a href="index.html" class="nav-btn">Voltar ao Início 🏠</a>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Concept -->
+        <div class="card">
+            <h2>Atitude e Lucro: A Manutenção do Sucesso</h2>
+            <p>O sucesso não é um destino, é um estado de execução contínua. Sua atitude é o <strong>Kernel</strong> sobre o qual todas as suas técnicas de venda rodam. Se o Kernel estiver corrompido, nenhum App de venda funcionará.</p>
+            
+            <div class="code-logic">
+                <span style="color: #6a9955;">// Runtime Configuration: Production</span><br>
+                <span style="color: #569cd6;">while</span> (isAlive) { <br>
+                &nbsp;&nbsp; Rogoberto.<span style="color: #dcdcaa;">buildAttitude</span>(); <br>
+                &nbsp;&nbsp; Rogoberto.<span style="color: #dcdcaa;">deliverValue</span>(); <br>
+                &nbsp;&nbsp; profit += valueGenerated - ego; <br>
+                }
+            </div>
+        </div>
+
+        <!-- A Nata -->
+        <div class="grid">
+            <div class="nata-card">
+                <h3>Atitude como OS</h3>
+                <p>Você não "tem" uma atitude, você a constrói diariamente. Ela dita a sua altitude e a resiliência do seu sistema de vendas.</p>
+            </div>
+            <div class="nata-card">
+                <h3>Lucro via Valor</h3>
+                <p>Vendedores ricos focam em ajudar o cliente a ganhar dinheiro. Pare de cobrar por "horas de código" e comece a cobrar por "lucro gerado".</p>
+            </div>
+            <div class="nata-card">
+                <h3>CI/CD Mental</h3>
+                <p>O aprendizado contínuo é a única forma de evitar o legado. Integre novos conhecimentos diariamente e aprenda com os logs de erro (nãos).</p>
+            </div>
+        </div>
+
+        <!-- Pilares -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Os Pilares da Permanência</h3>
+            <div class="pilar-item">
+                <strong>01. Auto-Responsabilidade:</strong> Zero desculpas. Se a venda falhou, a refatoração é sua.
+            </div>
+            <div class="pilar-item">
+                <strong>02. Networking Ativo:</strong> Semeie hoje para colher o lucro futuro. Mantenha o cluster conectado.
+            </div>
+            <div class="pilar-item">
+                <strong>03. Resiliência Pós-Venda:</strong> O lucro real está na indicação. Trate o cliente fechado como um VIP.
+            </div>
+        </div>
+
+        <!-- Botão Final -->
+        <a href="#" class="deploy-btn">🚀 DEPLOY: Iniciar Carreira de Sucesso</a>
+
+        <!-- Desafio Final -->
+        <div class="card" style="border-bottom: 5px solid var(--accent);">
+            <h3 style="color: var(--accent);">🎯 Upgrade de Atitude (30 Dias)</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>30 min de leitura técnica/vendas por dia.</li>
+                <li>Remover 100% das reclamações do vocabulário.</li>
+                <li>Escrever 1 nota de agradecimento diária para um parceiro ou cliente.</li>
+            </ul>
+        </div>
+
+        <!-- JSON Viewer -->
+        <div class="json-viewer">
+            <pre>
+{
+  "id": 12,
+  "curador": "Rogoberto Ribeiro da Silva",
+  "meta": "Sua atitude determina sua altitude",
+  "runtime": "Production Live",
+  "strategy": "Infinite Value Loop",
+  "status": "Deployment Complete"
+}
+            </pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 - Masterizado por <strong>Rogoberto Ribeiro da Silva</strong></p>
+        <p>Baseado na filosofia de Jeffrey Gitomer</p>
+    </footer>
+
+</body>
+</html>
