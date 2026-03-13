@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rogoberto Ribeiro da Silva">
+    <meta name="description" content="Treinamento de Vendas: Tratamento de Objeções - Curadoria por Rogoberto Ribeiro da Silva">
+    <title>Capítulo 5: Objeções - O Tratamento de Exceções | Rogoberto Ribeiro da Silva</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #f2a900;
+            --text: #333;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --code-bg: #1e1e1e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #b21f1f, #fdbb2d);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .branding {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Lógica Try/Catch */
+        .code-logic {
+            background: var(--code-bg);
+            color: #9cdcfe;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            border-left: 5px solid var(--secondary);
+        }
+        .code-keyword { color: #c586c0; }
+        .code-comment { color: #6a9955; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .objection-card {
+            background: #fff;
+            border-top: 4px solid var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .script-box {
+            background: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            font-style: italic;
+            border-left: 3px solid #ddd;
+        }
+
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .steps-list li::before {
+            content: "➔";
+            color: var(--secondary);
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .json-viewer {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="branding">Metodologia de Performance</div>
+        <h1>Rogoberto Ribeiro da Silva</h1>
+        <p>A Bíblia de Vendas: Capítulo 5 - Objeções</p>
+    </header>
+
+    <nav class="nav-container">
+        <a href="4.html" class="nav-btn">← Capítulo 4</a>
+        <a href="6.html" class="nav-btn">Próximo Capítulo (6) →</a>
+    </nav>
+
+    <div class="container">
+        <!-- Conceito Central -->
+        <div class="card">
+            <h2>Objeções: O Sinal de Compra Disfarçado</h2>
+            <p>Objeções não são rejeições. São perguntas não respondidas sobre o valor do seu produto. No mundo das vendas de alta performance, tratamos objeções como exceções em um código.</p>
+            
+            <div class="code-logic">
+                <span class="code-keyword">try</span> { <br>
+                &nbsp;&nbsp;FecharVenda(); <br>
+                } <span class="code-keyword">catch</span> (Objeção e) { <br>
+                &nbsp;&nbsp;<span class="code-comment">// O "Não" é apenas a primeira camada do "Sim"</span><br>
+                &nbsp;&nbsp;TratarValor(e); <br>
+                }
+            </div>
+        </div>
+
+        <!-- A Nata das Objeções -->
+        <div class="grid">
+            <div class="objection-card">
+                <h3>💰 Preço</h3>
+                <p>O preço só é um problema na ausência de valor. O cliente reclama que não entendeu o benefício.</p>
+                <div class="script-box">
+                    "Se o preço fosse metade, você compraria agora? Então o problema não é o produto, é o encaixe no fluxo."
+                </div>
+            </div>
+            <div class="objection-card">
+                <h3>⏳ "Vou Pensar"</h3>
+                <p>Isso é medo ou falta de urgência. Você não mostrou o custo de não agir agora.</p>
+                <div class="script-box">
+                    "Geralmente, quando alguém precisa 'pensar', é porque eu não fui claro. O que ainda te preocupa?"
+                </div>
+            </div>
+            <div class="objection-card">
+                <h3>🤝 Já tenho fornecedor</h3>
+                <p>Não ataque a concorrência. Elogie a fidelidade e peça uma brecha de comparação.</p>
+                <div class="script-box">
+                    "Ótimo! Posso te mostrar apenas um diferencial que meus clientes atuais mais elogiam?"
+                </div>
+            </div>
+        </div>
+
+        <!-- Passos da Cura -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Os 6 Passos da Cura (The Handling Workflow)</h3>
+            <ul class="steps-list">
+                <li><strong>Ouça até o fim:</strong> Não interrompa o fluxo da "exceção".</li>
+                <li><strong>Reconheça:</strong> Valide o sentimento do cliente sem concordar com o erro.</li>
+                <li><strong>Isole:</strong> "Além disso, existe algo mais que nos impeça?".</li>
+                <li><strong>Responda:</strong> Traga provas sociais ou dados técnicos de retorno.</li>
+                <li><strong>Confirme:</strong> "Isso faz sentido para você?".</li>
+                <li><strong>Peça a venda:</strong> Reexecute a função principal.</li>
+            </ul>
+        </div>
+
+        <!-- Desafio Pro -->
+        <div class="card" style="border-right: 5px solid var(--primary); background: #eef2f3;">
+            <h3>🎯 Desafio Pro de Rogoberto</h3>
+            <p>Identifique a objeção mais comum que você ouve ao oferecer o seu <strong>Lead Scraper</strong> e escreva 3 formas de respondê-la focando em <strong>lucro gerado</strong>, não em desconto concedido.</p>
+        </div>
+
+        <!-- JSON Viewer -->
+        <div class="json-viewer">
+            <pre>
+{
+  "id": 5,
+  "curador": "Rogoberto Ribeiro da Silva",
+  "logica": "Tratamento de Exceções",
+  "meta": "Isolar a variável do medo e injetar valor",
+  "frase_ancora": "O 'Não' é apenas a primeira camada do 'Sim'."
+}
+            </pre>
+        </div>
+    </div>
+
+    <nav class="nav-container" style="margin-bottom: 0;">
+        <a href="4.html" class="nav-btn">← Anterior</a>
+        <a href="ultimocapitulo.html" class="nav-btn" style="background-color: var(--secondary); border-color: #000; color: #000;">Ir para o Final 🏁</a>
+        <a href="6.html" class="nav-btn">Próximo Capítulo →</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2023 - Conteúdo Estruturado por <strong>Rogoberto Ribeiro da Silva</strong></p>
+        <p>Baseado na obra de Jeffrey Gitomer</p>
+    </footer>
+
+</body>
+</html>
