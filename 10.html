@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rogoberto Ribeiro da Silva">
+    <meta name="description" content="Treinamento de Vendas: Vendas em Grupo e Orquestração - Curadoria por Rogoberto Ribeiro da Silva">
+    <title>Capítulo 10: Cluster Management - Vendas em Grupo | Rogoberto Ribeiro da Silva</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #f2a900;
+            --accent: #3498db; /* Azul para Orquestração/Cloud */
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --text: #333;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --code-bg: #1e1e1e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #4a148c);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .branding {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Distributed Consensus Logic */
+        .code-logic {
+            background: var(--code-bg);
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent);
+        }
+        .code-keyword { color: #c586c0; }
+        .code-comment { color: #6a9955; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .stakeholder-card {
+            background: #fff;
+            border-top: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .stakeholder-card h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 10px; }
+
+        /* Mandamentos List */
+        .mandamentos-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        .mandamento-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .mandamento-item::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            line-height: 1;
+        }
+
+        .script-section {
+            background: #1a2a6c;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .script-quote {
+            font-style: italic;
+            border-left: 3px solid var(--secondary);
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #ecf0f1;
+        }
+
+        .challenge-pro {
+            background: linear-gradient(to right, #2c3e50, #000000);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        .challenge-pro h3 { color: var(--secondary); }
+
+        .json-viewer {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="branding">Metodologia de Performance</div>
+        <h1>Rogoberto Ribeiro da Silva</h1>
+        <p>A Bíblia de Vendas: Capítulo 10 - Vendas em Grupo</p>
+        <div class="status-badge">ARCH: DISTRIBUTED CONSENSUS MANAGEMENT</div>
+    </header>
+
+    <nav class="nav-container">
+        <a href="9.html" class="nav-btn">← Capítulo 9</a>
+        <a href="ultimocapitulo.html" class="nav-btn">Próximo Capítulo (Resumo) →</a>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Concept -->
+        <div class="card">
+            <h2>Vendas em Grupo: Orquestrando o Consenso</h2>
+            <p>Em uma sala cheia, você não faz uma apresentação; você lidera uma discussão onde todos os nós (stakeholders) devem atingir o estado de <strong>COMMIT</strong>.</p>
+            
+            <div class="code-logic">
+                <span class="code-comment">// Distributed Consensus (Raft/Paxos Style)</span><br>
+                <span class="code-keyword">if</span> (consensus_reached(decisor, influenciador, usuario, cético)) { <br>
+                &nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-func">STATUS_200_OK</span>; <br>
+                } <span class="code-keyword">else</span> { <br>
+                &nbsp;&nbsp;<span class="code-func">rebalance_cluster()</span>; <span class="code-comment">// Reajuste a energia da sala</span><br>
+                }
+            </div>
+        </div>
+
+        <!-- A Nata (Nodes Mapping) -->
+        <div class="grid">
+            <div class="stakeholder-card">
+                <h3>Identifique os Papéis</h3>
+                <p>Mapeie os endpoints: O <strong>Decisor</strong> (Root), o <strong>Influenciador</strong> (Proxy), o <strong>Usuário</strong> (Client) e o <strong>Cético</strong> (Firewall).</p>
+            </div>
+            <div class="stakeholder-card">
+                <h3>Regra do Contato Visual 2-2</h3>
+                <p>Fale com uma pessoa por vez. Olhe nos olhos por 2-3 segundos (uma frase) e mude. Evite o loop de olhar apenas para o slide.</p>
+            </div>
+            <div class="stakeholder-card">
+                <h3>Tratamento de Exceções</h3>
+                <p>Neutralize o cético antecipadamente. Traga a dúvida dele antes que ele a lance como um ataque ao sistema.</p>
+            </div>
+        </div>
+
+        <!-- Mandamentos da Banca -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Os Mandamentos da Banca</h3>
+            <div class="mandamentos-box">
+                <div class="mandamento-item">Nunca foque em apenas uma pessoa (evite o Single Point of Failure).</div>
+                <div class="mandamento-item">Chegue cedo para mapear o terreno físico e os humores dos nós que chegam primeiro.</div>
+                <div class="mandamento-item">Não lute contra desafios; use o cluster: "Como vocês veem esse ponto que o colega trouxe?".</div>
+                <div class="mandamento-item">Use materiais físicos (Handouts) para reduzir a latência de atenção voltada apenas à tela.</div>
+                <div class="mandamento-item">Detecte e gerencie o "Seqüestrador de Reunião" (o nó que consome toda a largura de banda).</div>
+            </div>
+        </div>
+
+        <!-- Scripts de Consenso -->
+        <div class="script-section">
+            <h3>Scripts de Orquestração</h3>
+            <p><strong>Abertura de Sessão:</strong></p>
+            <div class="script-quote">
+                "Obrigado por estarem aqui. Sei que cada um tem uma visão diferente sobre o projeto, então meu objetivo é mostrar como nossa solução atende a cada uma dessas necessidades."
+            </div>
+            <p><strong>Health Check (Fechamento):</strong></p>
+            <div class="script-quote">
+                "Considerando o que discutimos, alguém aqui vê algum impedimento técnico ou financeiro para avançarmos agora?"
+            </div>
+        </div>
+
+        <!-- Desafio Pro -->
+        <div class="challenge-pro">
+            <h3>🎯 Desafio Pro de Rogoberto</h3>
+            <p>Na sua próxima demonstração do <strong>RICARTEPREV</strong>, direcione uma pergunta específica de "valor" para a pessoa que parece mais desinteressada ou cética na sala.</p>
+            <p style="margin-top: 10px; font-weight: bold; color: var(--secondary);">Missão: Transformar o nó desinteressado em um aliado ativo do consenso.</p>
+        </div>
+
+        <!-- JSON Viewer -->
+        <div class="json-viewer">
+            <pre>
+{
+  "id": 10,
+  "curador": "Rogoberto Ribeiro da Silva",
+  "meta": "Orquestrar o OK de todos os stakeholders",
+  "logica": "Distributed Cluster Consensus",
+  "status": "Ready to Lead Discussion"
+}
+            </pre>
+        </div>
+    </div>
+
+    <nav class="nav-container" style="margin-bottom: 0;">
+        <a href="9.html" class="nav-btn">← Anterior</a>
+        <a href="ultimocapitulo.html" class="nav-btn" style="background-color: var(--secondary); border-color: #000; color: #000;">Ir para o Final 🏁</a>
+        <a href="ultimocapitulo.html" class="nav-btn">Resumo Final →</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2023 - Conteúdo Estruturado por <strong>Rogoberto Ribeiro da Silva</strong></p>
+        <p>Baseado na obra de Jeffrey Gitomer</p>
+    </footer>
+
+</body>
+</html>
