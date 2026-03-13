@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rogoberto Ribeiro da Silva">
+    <meta name="description" content="Treinamento de Vendas: Follow-up e Persistência - Curadoria por Rogoberto Ribeiro da Silva">
+    <title>Capítulo 7: Follow-up - A Retry Policy do Sucesso | Rogoberto Ribeiro da Silva</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #f2a900; /* Ouro Follow-up */
+            --text: #333;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --code-bg: #1e1e1e;
+            --accent-green: #27ae60;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #b21f1f, #fdbb2d);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .branding {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Lógica CRON / Retry */
+        .code-logic {
+            background: var(--code-bg);
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent-green);
+        }
+        .code-keyword { color: #c586c0; }
+        .code-func { color: #dcdcaa; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .nata-card {
+            background: #fff;
+            border-top: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Mandamentos */
+        .mandamentos-grid {
+            column-count: 2;
+            column-gap: 30px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) { .mandamentos-grid { column-count: 1; } }
+
+        .mandamento-item {
+            break-inside: avoid;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .mandamento-item::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .challenge-box {
+            background: linear-gradient(to right, #1a2a6c, #243b55);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .challenge-box h3 { color: var(--secondary); margin-bottom: 15px; }
+
+        .json-viewer {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="branding">Metodologia de Performance</div>
+        <h1>Rogoberto Ribeiro da Silva</h1>
+        <p>A Bíblia de Vendas: Capítulo 7 - Follow-up</p>
+    </header>
+
+    <nav class="nav-container">
+        <a href="6.html" class="nav-btn">← Capítulo 6</a>
+        <a href="8.html" class="nav-btn">Próximo Capítulo (8) →</a>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="card">
+            <h2>Follow-up: A Diferença entre o Prata e o Ouro</h2>
+            <p>O acompanhamento é o "Incremental Sync" da venda. Você não reenvia o banco de dados inteiro; você envia pequenos incrementos de valor até que a transação esteja completa.</p>
+            
+            <div class="code-logic">
+                <span class="code-keyword">while</span> (venda_nao_concluida) { <br>
+                &nbsp;&nbsp;<span class="code-func">wait</span>(t); <span class="code-comment">// Intervalo estratégico</span><br>
+                &nbsp;&nbsp;<span class="code-func">send_value_add</span>(content); <span class="code-comment">// Toque de valor</span><br>
+                }
+            </div>
+        </div>
+
+        <!-- A Nata -->
+        <div class="grid">
+            <div class="nata-card">
+                <h3>Follow-up vs. Perseguição</h3>
+                <p>Perseguição é perguntar "E aí?". Follow-up é enviar um insight, uma notícia ou uma funcionalidade nova que resolva uma dor do cliente.</p>
+            </div>
+            <div class="nata-card">
+                <h3>A Velocidade do Retorno</h3>
+                <p>No mundo digital, 10 minutos de demora custam caro. Envie o resumo da reunião e os próximos passos em até 2 horas.</p>
+            </div>
+            <div class="nata-card">
+                <h3>Seja Criativo ou Esquecido</h3>
+                <p>Use WhatsApp, LinkedIn, E-mail e Provas Sociais. Mude a abordagem, nunca a oferta de valor.</p>
+            </div>
+        </div>
+
+        <!-- Mandamentos -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Os 10 Mandamentos do Follow-up</h3>
+            <div class="mandamentos-grid">
+                <div class="mandamento-item">Nunca encerre sem o próximo contato agendado.</div>
+                <div class="mandamento-item">Varie o motivo do contato (notícias, convites).</div>
+                <div class="mandamento-item">Seja persistente, mas nunca inconveniente.</div>
+                <div class="mandamento-item">Use depoimentos de clientes como "desculpa" para contato.</div>
+                <div class="mandamento-item">Mantenha seu CRM/Base 100% atualizada.</div>
+                <div class="mandamento-item">Se não respondem, mude o canal ou a isca.</div>
+                <div class="mandamento-item">Seja a primeira lembrança do cliente no seu nicho.</div>
+                <div class="mandamento-item">O follow-up termina na compra ou na morte.</div>
+                <div class="mandamento-item">Automatize o repetitivo, personalize o crítico.</div>
+                <div class="mandamento-item">O foco é o relacionamento, não o boleto.</div>
+            </div>
+        </div>
+
+        <!-- Desafio Pro -->
+        <div class="challenge-box">
+            <h3>🎯 Desafio Pro de Rogoberto</h3>
+            <p>Pegue um lead do <strong>Lead Scraper</strong> que esfriou nos últimos 30 dias. Em vez de cobrar a venda, envie uma notícia sobre automação de dados que impacte o lucro dele.</p>
+            <p style="margin-top: 10px; font-weight: bold; color: var(--secondary);">Objetivo: Reaquecer a conexão sem pressão comercial.</p>
+        </div>
+
+        <!-- JSON Reference -->
+        <div class="json-viewer">
+            <pre>
+{
+  "id": 7,
+  "curador": "Rogoberto Ribeiro da Silva",
+  "meta": "A fortuna está no acompanhamento",
+  "logica": "CRON Job de Valor",
+  "status": "In Progress / Syncing"
+}
+            </pre>
+        </div>
+    </div>
+
+    <nav class="nav-container" style="margin-bottom: 0;">
+        <a href="6.html" class="nav-btn">← Anterior</a>
+        <a href="ultimocapitulo.html" class="nav-btn" style="background-color: var(--secondary); border-color: #000; color: #000;">Ir para o Final 🏁</a>
+        <a href="8.html" class="nav-btn">Próximo Capítulo →</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2023 - Conteúdo Estruturado por <strong>Rogoberto Ribeiro da Silva</strong></p>
+        <p>Baseado na obra de Jeffrey Gitomer</p>
+    </footer>
+
+</body>
+</html>
