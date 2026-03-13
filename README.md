@@ -30,14 +30,14 @@ while (isAlive) {
 
 </code>
 </pre>
-🛠️ Stack e SEO
+## 🛠️ Stack e SEO
 Hospedagem: GitHub Pages.
 
 Arquitetura: HTML5 Semântico para melhor indexação.
 
 SEO: Arquivo sitemap.xml configurado para rastreio total pelos bots do Google.
 
-⚖️ Pilares do Sistema
+## ⚖️ Pilares do Sistema
 Auto-Responsabilidade: Se a venda falhou, a refatoração é sua.
 
 Networking Ativo: Mantenha o cluster de contatos conectado.
@@ -48,11 +48,3 @@ Foco em Valor: Pare de vender "horas" e comece a entregar "lucro".
 Baseado na filosofia de Jeffrey Gitomer.
 
 
----
-
-### Próximos passos recomendados:
-1.  Crie um novo arquivo no seu repositório chamado `README.md`.
-2.  Cole o conteúdo acima.
-3.  Faça o **Commit** e o **Push**.
-
-**Deseja que eu gere também o arquivo `robots.txt` para garantir que o Google não ignore seu sitemap?**
